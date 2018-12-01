@@ -1,3 +1,13 @@
+function getColor(d) {
+    return d > 200000 ? '#800026' :
+           d > 160000  ? '#BD0026' :
+           d > 120000  ? '#E31A1C' :
+           d > 800000  ? '#FC4E2A' :
+           d > 60000   ? '#FD8D3C' :
+           d > 40000   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+}
 var config = {
 	"title": "Bootleaf template map",
 	"start": {
@@ -133,38 +143,5 @@ var config = {
 		  // }
 		},
 
-		{
-			"id": "US_population",
-			"name": "US Population (WMS)",
-			"type": "wmsTiledLayer",
-			"url": "https://demo.geo-solutions.it/geoserver/wfs",
-			"layers": "topp:states",
-      "visible": false,
-      "format": 'image/png',
-      "transparent": true,
-      "geomField": "the_geom",
-      "queryWidget": {
-				"queries" : [
-					{"name": "STATE_NAME", "alias": "Name"},
-					{"name": "STATE_ABBR", "alias": "Abbreviation"}
-				]
-			},
-			"identify": {
-				"layerName": "states",
-				"buffer": 10,
-				"outFields": [
-					{"name": "STATE_NAME", "alias": "Name"},
-					{"name": "STATE_ABBR", "alias": "Abbreviation"},
-					{"name": "FAMILIES", "alias": "Num families", "thousands": true}
-				]
-			},
-			"outFields": [
-				{"name": "STATE_NAME", "alias": "Name X"},
-				{"name": "STATE_ABBR", "alias": "Abbreviation"},
-				{"name": "FAMILIES", "alias": "No. Families", "thousands": true},
-				{"name": "LAND_KM", "alias": "sq. km", "thousands": true, "decimals": 1, "hidden": true},
-			]
-		},
-	
 	]
 }
